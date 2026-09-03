@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ receta.nombre }} | Recetas{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/receta.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="receta__contenedor">
+    <a href="{% url 'devconf:receta_lista' %}" class="receta__volver">&larr; Volver a todas las recetas</a>
+    <article class="receta" aria-labelledby="receta-titulo">
+        <header class="receta__encabezado">
+            <p class="receta__tipo-cocina">Cocina {{ receta.tipoCocina }}</p>
+            <h1 id="receta-titulo" class="receta__titulo">{{ receta.nombre }}</h1>
+            <p class="receta__tiempo">Tiempo de preparacion &middot; {{ receta.tiempoPreparacion }}</p>
+        </header>
+
+        <div class="receta__cuerpo">
+            <section class="receta__ingredientes" aria-labelledby="ingredientes-titulo">
+                <h2 id="ingredientes-titulo">Ingredientes</h2>
+                <ol class="receta__lista-ingredientes">
+                    {% for ingrediente in receta.ingredientes %}
+                    <li class="receta__ingrediente">
+                        <span class="receta__ingrediente-nombre">{{ ingrediente.nombre }}</span>
+                        <span class="receta__ingrediente-cantidad">{{ ingrediente.cantidad }} {{ ingrediente.unidad }}</span>
+                    </li>
+                    {% empty %}
+                    <li class="receta__vacio">No hay ingredientes registrados.</li>
+                    {% endfor %}
+                </ol>
+            </section>
+
+            <section class="receta__origen" aria-labelledby="origen-titulo">
+                <h2 id="origen-titulo">Origen</h2>
+                <p><strong>Region</strong>{{ receta.origen.region }}</p>
+                <p><strong>Pais</strong>{{ receta.origen.pais }}</p>
+            </section>
+        </div>
+
+        <footer class="receta__pie">
+            <p>Receta consultada desde la coleccion recetas_examen.</p>
+        </footer>
+    </article>
+</div>
+{% endblock %}

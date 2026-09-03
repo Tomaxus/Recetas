@@ -1,0 +1,112 @@
+.hero {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto calc(var(--espaciado-lg) * 1.5);
+}
+
+.hero__eyebrow {
+    color: var(--color-primario);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.hero__titulo {
+    font-size: 2.6rem;
+    margin-top: var(--espaciado-sm);
+}
+
+.hero__subtitulo {
+    color: var(--color-texto-suave);
+    margin-top: var(--espaciado-md);
+    font-size: 1.05rem;
+}
+
+.lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--espaciado-md);
+    max-width: 960px;
+    margin-inline: auto;
+}
+
+.lista__tarjeta {
+    display: flex;
+    align-items: center;
+    gap: var(--espaciado-md);
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-base);
+    padding: var(--espaciado-md) var(--espaciado-lg);
+    color: var(--color-texto);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.lista__tarjeta:hover,
+.lista__tarjeta:focus {
+    text-decoration: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 10px 24px rgba(46, 38, 32, 0.08);
+    transform: translateY(-2px);
+}
+
+.lista__inicial {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.lista__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.lista__tipo-cocina {
+    display: block;
+    color: var(--color-primario);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.lista__nombre {
+    font-size: 1.2rem;
+    margin-top: 0.15rem;
+}
+
+.lista__tiempo {
+    color: var(--color-texto-suave);
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+}
+
+.lista__flecha {
+    flex-shrink: 0;
+    color: var(--color-texto-suave);
+    font-size: 1.2rem;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.lista__tarjeta:hover .lista__flecha,
+.lista__tarjeta:focus .lista__flecha {
+    color: var(--color-primario);
+    transform: translateX(3px);
+}
+
+.lista__vacio {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--color-texto-suave);
+    font-style: italic;
+}

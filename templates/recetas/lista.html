@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Recetario{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/lista.css' %}">
+{% endblock %}
+
+{% block content %}
+<header class="hero">
+    <p class="hero__eyebrow">Coleccion culinaria</p>
+    <h1 class="hero__titulo">Nuestras recetas</h1>
+    <p class="hero__subtitulo">Explora cada preparacion, sus ingredientes y su origen. Elige una para ver el detalle completo.</p>
+</header>
+
+<section class="lista" aria-label="Listado de recetas">
+    {% for receta in recetas %}
+    <a href="{% url 'devconf:receta_detalle' receta.id %}" class="lista__tarjeta">
+        <span class="lista__inicial">{{ receta.nombre|slice:":1" }}</span>
+        <div class="lista__info">
+            <span class="lista__tipo-cocina">{{ receta.tipoCocina }}</span>
+            <h2 class="lista__nombre">{{ receta.nombre }}</h2>
+            <p class="lista__tiempo">{{ receta.tiempoPreparacion }}</p>
+        </div>
+        <span class="lista__flecha" aria-hidden="true">&rarr;</span>
+    </a>
+    {% empty %}
+    <p class="lista__vacio">No hay recetas registradas.</p>
+    {% endfor %}
+</section>
+{% endblock %}
